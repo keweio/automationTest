@@ -1,0 +1,15 @@
+from selenium import webdriver	# 引入webdriver api
+import time
+from selenium.webdriver.common.keys import Keys
+driver = webdriver.Chrome()		# 使用chrome浏览器声明一个webdriver对象
+driver.maximize_window()
+driver.get('https://fridge.deepthink.ai/admin/#/login')	# 表示使用chrome以get的方式请求百度的url
+driver.find_element_by_xpath('//div[@class="input-wrap"]/input').send_keys('deepthink')   #输入用户名
+driver.find_element_by_xpath('//div[@class="input-wrap"][2]/input').send_keys('deepthink.ai') #输入密码
+time.sleep(3)
+content = driver.find_element_by_class_name('button-login')  #定位登录按键
+content.send_keys(Keys.ENTER)
+#driver.find_element_by_xpath('//*[@class="button-login"]/button').send_keys(Keys.ENTER)
+#driver.find_element_by_id("username").send_keys("admin")
+#driver.find_element_by_id("kw").send_keys("admin")	# 检索到百度的输入框，输入selenium
+#driver.find_element_by_id("su").click()	# 检索到百度的搜索按钮并点击
